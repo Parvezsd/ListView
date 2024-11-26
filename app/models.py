@@ -1,5 +1,5 @@
 from django.db import models # type: ignore
-
+from django.urls import reverse
 # Create your models here.
 class School(models.Model):
     scname = models.CharField(max_length=100)
@@ -7,6 +7,8 @@ class School(models.Model):
     # scphone = models.IntegerField()
     def __str__(self):
         return self.scname
+    def get_absolute_url(self):
+        return reverse('SchoolDetail',kwargs={'pk':self.pk})
     
 class Student(models.Model):
     stname = models.CharField(max_length=100)
