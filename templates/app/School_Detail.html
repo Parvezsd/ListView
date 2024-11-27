@@ -1,9 +1,22 @@
 {% extends 'app/dummy.html' %}
 
 {% block title %}
-<title>Home</title>
+<title>Detail page</title>
 {% endblock %}
 {% block Dummy %}
+<center>
+    <h1>School Details</h1>
+    <h3>{{scobject.scname}}</h3>
+    <h3>{{scobject.scaddress}}</h3>
+    <h3>{{scobject.scloc}}</h3>
+    <h3>{{scobject.scprincipal}}</h3>
+    {% for sco in scobject.students.all %}
+    <h3>name of the student{{sco.stname}}</h3>
+    <h3>age of the student{{sco.stage}}</h3>
+    <h3>address of the student{{sco.staddress}}</h3>
+    {% endfor %}
 <h1>{{scobject.scname}}</h1>
 <a href="{% url 'SchoolUpdate' pk=scobject.pk %}" class="btn btn-success">Update</a>
+<a href="{% url 'SchoolDelete' pk=scobject.pk %}" class="btn btn-danger">Delete</a>
+</center>
 {% endblock %}

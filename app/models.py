@@ -4,7 +4,8 @@ from django.urls import reverse
 class School(models.Model):
     scname = models.CharField(max_length=100)
     scaddress = models.CharField(max_length=100)
-    # scphone = models.IntegerField()
+    scloc=models.CharField(max_length=100,null=True)
+    scprincipal=models.CharField(max_length=100,default='Hello')
     def __str__(self):
         return self.scname
     def get_absolute_url(self):
